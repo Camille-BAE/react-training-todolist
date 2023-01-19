@@ -6,7 +6,7 @@ import { data } from "./data/tasks";
 import { Header } from "./components/Header"
 
 const App = () => {
-  const title = "To do list";
+  const title = "Camille To do list";
   const tasks = data;
   const taskToEdit: any = null;
 
@@ -29,10 +29,8 @@ const App = () => {
 
   return (
     <div className="main">
-      <Header/>
-      <div className="header">
-        <h1>{title}</h1> {/* <= interpolation */}
-      </div>
+      <Header title={title}/>
+
       <Task />
       <button
         className="add-task-btn"
