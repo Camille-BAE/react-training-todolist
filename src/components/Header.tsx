@@ -1,3 +1,13 @@
-<div className="header">
-  <h1>Replace me using the title const</h1>
-</div>;
+import React from "react";
+import "./Header.css";
+
+// type HeaderProps = {};
+
+export const Header = () => {
+  return (
+    <div className="header">
+      <h1>To do list</h1>
+    </div>
+  );
+};
+
