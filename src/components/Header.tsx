@@ -1,12 +1,16 @@
 import React from "react";
 import "./Header.css";
 
-// type HeaderProps = {};
+type HeaderProps = {
+  title: string;
+};
 
-export const Header = () => {
+export const Header = ({
+  title
+}: HeaderProps) => {
   return (
     <div className="header">
-      <h1>To do list</h1>
+      <h1>{title}</h1>
     </div>
   );
 };
