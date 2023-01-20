@@ -1,9 +1,15 @@
 import React from "react";
+import { TaskType } from "../models/Task"; // pour appeler l'interface
 import "./Task.css";
 
-type TaskProps = {};
+type TaskProps = {
+  task: TaskType; // pour appeler l'interface
+};
 
-export const Task = ({}: TaskProps) => {
+/**autre façon de faire => export const Task = (props: TaskProps) => {
+ *  const {task} = props;
+} (ou alors const {title} = props.task */
+export const Task = ({task}: TaskProps) => {
   return (
     <div className="task-container">
       <div className="task-content">
@@ -11,7 +17,8 @@ export const Task = ({}: TaskProps) => {
           <input type="checkbox" checked={false} />
           <span className="checkmark"></span>
         </label>
-        <p>"Titre de la tâche"</p>
+        {/* si on utilise props il faut alors faire {props.task.title} */}
+        <p>{task.title}</p>
       </div>
       <div className="task-actions">
         <button onClick={() => console.log("edit")}>Edit</button>
