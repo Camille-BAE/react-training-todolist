@@ -5,9 +5,7 @@ type HeaderProps = {
   title: string;
 };
 
-export const Header = ({
-  title
-}: HeaderProps) => {
+export const Header = ({title}: HeaderProps) => {
   return (
     <div className="header">
       <h1>{title}</h1>
