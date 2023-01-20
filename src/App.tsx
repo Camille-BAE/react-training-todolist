@@ -31,7 +31,7 @@ const App = () => {
     <div className="main">
       <Header title={title}/>
 
-      <Task />
+      <Task task={tasks[0]}/>
       <button
         className="add-task-btn"
         onClick={() => console.log("this button should open the modal")}
