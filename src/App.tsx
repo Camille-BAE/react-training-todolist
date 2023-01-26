@@ -8,9 +8,10 @@ import { TasksList } from "./components/TasksList"
 
 const App = () => {
   const title = "Camille To do list";
-  const tasks = data;
+  // const tasks = data;
   const taskToEdit: any = null;
   const [showModal, setShowModal]= useState(false);
+  const [tasks, setTasks]= useState(data);
 
   const updateTaskState = (taskId: number) => {
     console.error("I need to be implemented");
@@ -26,7 +27,9 @@ const App = () => {
   };
 
   const deleteTask = (taskId: number) => {
-    console.error("I need to be implemented");
+    const copyTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(copyTasks);
+    // setTasks((prev) => prev.filter((task) => task.id !== taskId)); <= on peut aussi le faire comme ça
   };
 
   return (
@@ -37,17 +40,17 @@ const App = () => {
         <Task task={obj}/>
       )} */}
 
-      <TasksList tasks={tasks} />
+      <TasksList deleteTask={deleteTask} tasks={tasks} />
 
       <button
         className="add-task-btn"
-        onClick={() => setShowModal(true)} // console.log("this button should open the modal")
+        onClick={() => setShowModal(true)} // <= this button should open the modal
       >
         +
       </button>
       <TaskFormModal
         show={showModal}
-        handleClose={() => setShowModal(false)} // console.log("pass me a method that will close the modal")
+        handleClose={() => setShowModal(false)} // <= pass me a method that will close the modal
         addOrEditTask={addOrEditTask}
         initialValues={
           taskToEdit != null
