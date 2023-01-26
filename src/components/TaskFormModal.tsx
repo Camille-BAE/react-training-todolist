@@ -15,13 +15,11 @@ export const TaskFormModal = ({
   initialValues,
 }: TaskFormModalProps) => {
   const [title, setTitle] = useState(initialValues?.title ?? undefined);
-  const [description, setDescription] = useState(
-    initialValues?.description ?? undefined
-  );
+  const [description, setDescription] = useState(initialValues?.description ?? undefined);
 
   // Use a hook to listen to the initial values changes here
 
-  if (!show) return null;
+  if (!show) return null; // pareil à if (show === false) { return null }
 
   return (
     <div className="modal">
@@ -29,7 +27,7 @@ export const TaskFormModal = ({
         <button
           className="close-btn"
           type="button"
-          onClick={() => "The modal should close iteself"}
+          onClick={() => handleClose()}
         >
           X
         </button>
@@ -60,7 +58,7 @@ export const TaskFormModal = ({
           </label>
           <div className="form-actions">
             <button type="submit">Enregistrer</button>
-            <button onClick={() => "The modal should close iteself"}>
+            <button onClick={() => handleClose()}>
               Annuler
             </button>
           </div>

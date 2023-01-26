@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Task } from "./components/Task";
 import { TaskFormModal } from "./components/TaskFormModal";
@@ -10,6 +10,7 @@ const App = () => {
   const title = "Camille To do list";
   const tasks = data;
   const taskToEdit: any = null;
+  const [showModal, setShowModal]= useState(false);
 
   const updateTaskState = (taskId: number) => {
     console.error("I need to be implemented");
@@ -40,15 +41,13 @@ const App = () => {
 
       <button
         className="add-task-btn"
-        onClick={() => console.log("this button should open the modal")}
+        onClick={() => setShowModal(true)} // console.log("this button should open the modal")
       >
         +
       </button>
       <TaskFormModal
-        show={false}
-        handleClose={() =>
-          console.log("pass me a method that will close the modal")
-        }
+        show={showModal}
+        handleClose={() => setShowModal(false)} // console.log("pass me a method that will close the modal")
         addOrEditTask={addOrEditTask}
         initialValues={
           taskToEdit != null
