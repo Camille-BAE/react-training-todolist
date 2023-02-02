@@ -10,7 +10,7 @@ import { TaskType } from "./models/Task";
 const App = () => {
   const title = "Camille To do list";
   // const tasks = data;
-  const [taskToEdit, setTaskToEdit]= useState (null);
+  const [taskToEdit, setTaskToEdit]= useState <TaskType | null> (null); // <= Par défault c'est de type null. Du coup, on rajoute des cheuvrons pour préciser que s'il n'y a rien, c'est null, ou si on édit une tâche, c'est de type TaskType
   const [showModal, setShowModal]= useState(false);
   const [tasks, setTasks]= useState(data);
 
@@ -40,8 +40,8 @@ const App = () => {
     if (task != null) {
       setTaskToEdit(task);
       setShowModal(true);
+      console.log(task);
     };
-    console.log(task);
   };
 
   const deleteTask = (taskId: number) => {
