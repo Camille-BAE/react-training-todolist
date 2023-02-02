@@ -6,16 +6,16 @@ import "./TasksList.css"
 
 type TaskListProps = {
   tasks : TaskType[];
-  updateTaskState: (taskId: number) => void;
+  // updateTaskState: (taskId: number) => void;
   editTask: (taskId: number) => void;
   deleteTask: (taskId: number) => void;
 }
 
-export const TasksList = ({tasks, updateTaskState, editTask, deleteTask}: TaskListProps) => {
+export const TasksList = ({tasks, editTask, deleteTask}: TaskListProps) => {
   return (
     <div className="list-container">
       {tasks.map((task: TaskType) =>
-        <Task task={task} updateTaskState={updateTaskState} editTask={editTask} deleteTask={deleteTask}/> // quand on met des () à une methode, on lui dit en gros qu'elle doit exécuter quelque chose. si on ne veut pas que la méthode s'exécute, il ne faut pas mettre de ()
+        <Task task={task} editTask={editTask} deleteTask={deleteTask}/> // quand on met des () à une methode, on lui dit en gros qu'elle doit exécuter quelque chose. si on ne veut pas que la méthode s'exécute, il ne faut pas mettre de ()
       )}
     </div>
   );

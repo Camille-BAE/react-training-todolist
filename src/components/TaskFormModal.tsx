@@ -5,19 +5,39 @@ type TaskFormModalProps = {
   show: boolean;
   handleClose: () => void;
   addOrEditTask: (event: any, taskId?: number) => void;
-  updateTaskState?: { id: number; title: string; description: string };
+  initialValues?: { id: number; title: string; description: string }; // updateTaskState (?)
 };
 
 export const TaskFormModal = ({
   show,
   handleClose,
   addOrEditTask,
-  updateTaskState,
+  initialValues, // updateTaskState (?)
 }: TaskFormModalProps) => {
-  const [title, setTitle] = useState(updateTaskState?.title ?? undefined);
-  const [description, setDescription] = useState(updateTaskState?.description ?? undefined);
+  const [title, setTitle] = useState(initialValues?.title ?? undefined); //updateTaskState?
+  const [description, setDescription] = useState(initialValues?.description ?? undefined); // updateTaskState?
 
   // Use a hook to listen to the initial values changes here
+  // const [  ] = useState(0);
+  useEffect(() => {
+    setTitle(initialValues?.title);
+
+    // code here
+  }, [initialValues]);
+
+  useEffect(() => {
+    setDescription(initialValues?.description);
+
+    // code here
+  }, [initialValues]);
+
+  /*
+  pour automatiser tout ça, tu peux aussi faire :
+    useEffect(() => {
+      setTitle(initialValues?.title);
+      setDescription(initialValues?.description);
+    }, [initialValues]) */
+
 
   if (!show) return null; // pareil à if (show === false) { return null }
 
@@ -33,7 +53,7 @@ export const TaskFormModal = ({
         </button>
         <h3>Nouvelle tâche</h3>
         <form // regarde le onSubmit d'en dessous, c'est peut-être un indice
-          onSubmit={(e) => addOrEditTask(e, updateTaskState?.id)}
+          onSubmit={(e) => addOrEditTask(e, initialValues?.id)} // updateTaskState?
           className="task-form"
         >
           <label>

@@ -15,21 +15,31 @@ const App = () => {
   const [tasks, setTasks]= useState(data);
 
 
-  const updateTaskState = (taskId: number) => {
-    const 
-  };
+  // BONUS
+  // const updateTaskState = (taskId: number) => {
+ 
+  // };
 
   const addOrEditTask = (event: any, taskToEditId?: number) => {
     event.preventDefault();
 
-    const newTask: TaskType = {
-      done: false,
-      id: tasks[tasks.length-1].id + 1,
-      title: event.target.title.value,
-      description: event.target.description.value,
+    if (taskToEditId != null) {
+      const tmpTask = tasks.find((task) => taskToEditId === task.id);
+      if (tmpTask) {
+        tmpTask.title = event.target.title.value;
+        tmpTask.description = event.target.description.value;
+      }
+      setTaskToEdit(null)
+    }
+    else {
+      const newTask: TaskType = {
+        done: false,
+        id: tasks[tasks.length-1].id + 1,
+        title: event.target.title.value,
+        description: event.target.description.value,
+      };
+      setTasks([...tasks, newTask]);
     };
-
-    setTasks([...tasks, newTask]);
     setShowModal(false);
   };
 
@@ -62,7 +72,7 @@ const App = () => {
         <Task task={obj}/>
       )} */}
 
-      <TasksList updateTaskState={updateTaskState} editTask={editTask} deleteTask={deleteTask} tasks={tasks} />
+      <TasksList editTask={editTask} deleteTask={deleteTask} tasks={tasks} />
 
       <button
         className="add-task-btn"
@@ -74,7 +84,7 @@ const App = () => {
         show={showModal}
         handleClose={() => setShowModal(false)} // <= pass me a method that will close the modal
         addOrEditTask={addOrEditTask}
-        updateTaskState={
+        initialValues={ // updateTaskState (?)
           taskToEdit != null
             ? {
                 id: taskToEdit.id,
