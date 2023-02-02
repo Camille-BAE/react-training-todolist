@@ -145,7 +145,7 @@ At the end of this step, we just want the modal to be opened with the task title
 ### UseEffect
 
 Ok, I can see that the task to edit is passed to the modal in the initialValues prop.
-But when I click on "edit", I can not see the values of title and description I jast passed...
+But when I click on "edit", I can not see the values of title and description I just passed...
 Indeed ! But why ? As you can see, the `TaskFormModal` component is called in the App.tsx. Which means that, this component is NOT rendered when you open it, but when the App.tsx is executed. So basically, when you go to the url of the app, the modal is rendered, and as you can see, at first, the initial values are null. 
 
 How can we re-render the initial values when it gets updated then ? 

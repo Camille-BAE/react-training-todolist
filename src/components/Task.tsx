@@ -4,13 +4,15 @@ import "./Task.css";
 
 type TaskProps = {
   task: TaskType; // pour appeler l'interface
+  editTask: (taskId: number) => void;
+  updateTaskState: (taskId: number) => void;
   deleteTask: (taskId: number) => void;
 };
 
 /**autre façon de faire => export const Task = (props: TaskProps) => {
  *  const {task} = props;
 } (ou alors const {title} = props.task */
-export const Task = ({task, deleteTask}: TaskProps) => {
+export const Task = ({task, editTask, updateTaskState, deleteTask}: TaskProps) => {
   return (
     <div className="task-container">
       <div className="task-content">
@@ -22,7 +24,7 @@ export const Task = ({task, deleteTask}: TaskProps) => {
         <p>{task.title}</p>
       </div>
       <div className="task-actions">
-        <button onClick={() => console.log("edit")}>Edit</button>
+        <button onClick={() => editTask(task.id)}>Edit</button>
         <button onClick={() => deleteTask(task.id)}>Delete</button>
       </div>
     </div>

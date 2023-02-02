@@ -32,7 +32,7 @@ export const TaskFormModal = ({
           X
         </button>
         <h3>Nouvelle tâche</h3>
-        <form
+        <form // regarde le onSubmit d'en dessous, c'est peut-être un indice
           onSubmit={(e) => addOrEditTask(e, initialValues?.id)}
           className="task-form"
         >
