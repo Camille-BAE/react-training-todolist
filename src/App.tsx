@@ -16,7 +16,7 @@ const App = () => {
 
 
   const updateTaskState = (taskId: number) => {
-    
+    const 
   };
 
   const addOrEditTask = (event: any, taskToEditId?: number) => {
@@ -31,8 +31,6 @@ const App = () => {
 
     setTasks([...tasks, newTask]);
     setShowModal(false);
-
-    // 
   };
 
   const editTask = (taskId: number) => {
@@ -76,7 +74,7 @@ const App = () => {
         show={showModal}
         handleClose={() => setShowModal(false)} // <= pass me a method that will close the modal
         addOrEditTask={addOrEditTask}
-        initialValues={
+        updateTaskState={
           taskToEdit != null
             ? {
                 id: taskToEdit.id,

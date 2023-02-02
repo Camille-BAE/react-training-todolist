@@ -149,7 +149,7 @@ But when I click on "edit", I can not see the values of title and description I 
 Indeed ! But why ? As you can see, the `TaskFormModal` component is called in the App.tsx. Which means that, this component is NOT rendered when you open it, but when the App.tsx is executed. So basically, when you go to the url of the app, the modal is rendered, and as you can see, at first, the initial values are null. 
 
 How can we re-render the initial values when it gets updated then ? 
-Bu using a new react hook called `useEffect` in the `TaskFormModal`. 
+By using a new react hook called `useEffect` in the `TaskFormModal`. 
 Check out the doc to understand how to use this hook and use it in the modal component.
 Finally, when you manage to display the values of the task to edit in the modal, you need to save them in the right function of the App.tsx by updating its logic. 
 Yes, it is a tricky one but it's cool to make mistakes, you will learn a lot :)

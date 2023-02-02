@@ -5,17 +5,17 @@ type TaskFormModalProps = {
   show: boolean;
   handleClose: () => void;
   addOrEditTask: (event: any, taskId?: number) => void;
-  initialValues?: { id: number; title: string; description: string };
+  updateTaskState?: { id: number; title: string; description: string };
 };
 
 export const TaskFormModal = ({
   show,
   handleClose,
   addOrEditTask,
-  initialValues,
+  updateTaskState,
 }: TaskFormModalProps) => {
-  const [title, setTitle] = useState(initialValues?.title ?? undefined);
-  const [description, setDescription] = useState(initialValues?.description ?? undefined);
+  const [title, setTitle] = useState(updateTaskState?.title ?? undefined);
+  const [description, setDescription] = useState(updateTaskState?.description ?? undefined);
 
   // Use a hook to listen to the initial values changes here
 
@@ -33,7 +33,7 @@ export const TaskFormModal = ({
         </button>
         <h3>Nouvelle tâche</h3>
         <form // regarde le onSubmit d'en dessous, c'est peut-être un indice
-          onSubmit={(e) => addOrEditTask(e, initialValues?.id)}
+          onSubmit={(e) => addOrEditTask(e, updateTaskState?.id)}
           className="task-form"
         >
           <label>
